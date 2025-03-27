@@ -8,7 +8,7 @@ import { Header } from '@/components/Header'
 import { Title } from '@/components/Title'
 import { ButtonIcon } from '@/components/ButtonIcon'
 
-export function Home({ navigation }: DrawerRoutesProps<'bottom'>) {
+export function Home({ navigation }: StackRoutesProps<'home'>) {
   return (
     <View style={{ flex: 1, padding: 32, paddingTop: 54 }}>
       <Header>

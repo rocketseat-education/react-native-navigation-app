@@ -5,25 +5,35 @@ import {
 
 import { Home } from '@/app/Home'
 import { Product } from '@/app/Product'
-import { BottomRoutes } from './BottomRoutes'
+import { CompositeScreenProps } from '@react-navigation/native'
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
+import { BottomRoutesList } from './BottomRoutes'
+import { DrawerScreenProps } from '@react-navigation/drawer'
+import { DrawerRoutesList } from './DrawerRoutes'
 
 export type StackRoutesList = {
-  bottom: undefined
+  home: undefined
   product: undefined | { id: string }
 }
 
 export type StackRoutesProps<T extends keyof StackRoutesList> =
-  NativeStackScreenProps<StackRoutesList, T>
+  CompositeScreenProps<
+    NativeStackScreenProps<StackRoutesList, T>,
+    CompositeScreenProps<
+      BottomTabScreenProps<BottomRoutesList>,
+      DrawerScreenProps<DrawerRoutesList>
+    >
+  >
 
 const Stack = createNativeStackNavigator<StackRoutesList>()
 
 export function StackRoutes() {
   return (
     <Stack.Navigator
-      initialRouteName="bottom"
+      initialRouteName="home"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="bottom" component={BottomRoutes} />
+      <Stack.Screen name="home" component={Home} />
       <Stack.Screen name="product" component={Product} />
     </Stack.Navigator>
   )
