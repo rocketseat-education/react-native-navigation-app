@@ -8,16 +8,17 @@ import { Header } from '@/components/Header'
 import { Title } from '@/components/Title'
 import { ButtonIcon } from '@/components/ButtonIcon'
 
-export function Home({ navigation }: DrawerRoutesProps<'bottom'>) {
+export function Notifications({
+  navigation,
+}: BottomRoutesProps<'notifications'>) {
   return (
     <View style={{ flex: 1, padding: 32, paddingTop: 54 }}>
       <Header>
         <ButtonIcon
-          name="add-circle"
-          onPress={() => navigation.navigate('product', { id: '153' })}
+          name="arrow-circle-left"
+          onPress={() => navigation.goBack()}
         />
-        <Title>Home</Title>
-        <ButtonIcon name="menu" onPress={() => navigation.toggleDrawer()} />
+        <Title>Notificações</Title>
       </Header>
     </View>
   )

@@ -4,12 +4,12 @@ import {
 } from '@react-navigation/bottom-tabs'
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { Home } from '@/app/Home'
-import { Product } from '@/app/Product'
+import { Notifications } from '@/app/Notifications'
+import { StackRoutes } from './StackRoutes'
 
 export type BottomRoutesList = {
-  home: undefined
-  product: undefined | { id: string }
+  stack: undefined
+  notifications: undefined
 }
 
 export type BottomRoutesProps<T extends keyof BottomRoutesList> =
@@ -20,7 +20,7 @@ const Tab = createBottomTabNavigator<BottomRoutesList>()
 export function BottomRoutes() {
   return (
     <Tab.Navigator
-      initialRouteName="home"
+      initialRouteName="stack"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: '#2C46B1',
@@ -29,8 +29,8 @@ export function BottomRoutes() {
       }}
     >
       <Tab.Screen
-        name="home"
-        component={Home}
+        name="stack"
+        component={StackRoutes}
         options={{
           tabBarLabel: 'Ínicio',
           tabBarIcon: ({ color, size }) => (
@@ -39,12 +39,12 @@ export function BottomRoutes() {
         }}
       />
       <Tab.Screen
-        name="product"
-        component={Product}
+        name="notifications"
+        component={Notifications}
         options={{
-          tabBarLabel: 'Produto',
+          tabBarLabel: 'Notificações',
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="add-circle" color={color} size={size} />
+            <MaterialIcons name="notifications" color={color} size={size} />
           ),
         }}
       />

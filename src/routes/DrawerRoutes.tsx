@@ -4,12 +4,13 @@ import {
 } from '@react-navigation/drawer'
 import { MaterialIcons } from '@expo/vector-icons'
 
-import { Home } from '@/app/Home'
-import { Product } from '@/app/Product'
+import { BottomRoutes } from './BottomRoutes'
+
+import { Settings } from '@/app/Settings'
 
 export type DrawerRoutesList = {
-  home: undefined
-  product: undefined | { id: string }
+  bottom: undefined
+  settings: undefined | { id: string }
 }
 
 export type DrawerRoutesProps<T extends keyof DrawerRoutesList> =
@@ -20,7 +21,7 @@ const Drawer = createDrawerNavigator<DrawerRoutesList>()
 export function DrawerRoutes() {
   return (
     <Drawer.Navigator
-      initialRouteName="home"
+      initialRouteName="bottom"
       screenOptions={{
         headerShown: false,
         drawerActiveTintColor: '#2C46B1',
@@ -28,8 +29,8 @@ export function DrawerRoutes() {
       }}
     >
       <Drawer.Screen
-        name="home"
-        component={Home}
+        name="bottom"
+        component={BottomRoutes}
         options={{
           drawerLabel: 'Ínicio',
           drawerIcon: ({ color, size }) => (
@@ -38,12 +39,12 @@ export function DrawerRoutes() {
         }}
       />
       <Drawer.Screen
-        name="product"
-        component={Product}
+        name="settings"
+        component={Settings}
         options={{
-          drawerLabel: 'Produto',
+          drawerLabel: 'Configurações',
           drawerIcon: ({ color, size }) => (
-            <MaterialIcons name="add-circle" color={color} size={size} />
+            <MaterialIcons name="settings" color={color} size={size} />
           ),
         }}
       />

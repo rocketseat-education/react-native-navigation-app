@@ -5,9 +5,10 @@ import {
 
 import { Home } from '@/app/Home'
 import { Product } from '@/app/Product'
+import { BottomRoutes } from './BottomRoutes'
 
 export type StackRoutesList = {
-  home: undefined
+  bottom: undefined
   product: undefined | { id: string }
 }
 
@@ -19,10 +20,10 @@ const Stack = createNativeStackNavigator<StackRoutesList>()
 export function StackRoutes() {
   return (
     <Stack.Navigator
-      initialRouteName="home"
+      initialRouteName="bottom"
       screenOptions={{ headerShown: false }}
     >
-      <Stack.Screen name="home" component={Home} />
+      <Stack.Screen name="bottom" component={BottomRoutes} />
       <Stack.Screen name="product" component={Product} />
     </Stack.Navigator>
   )
